@@ -9,29 +9,31 @@ document.addEventListener('DOMContentLoaded', () => {
 	  { email: 'gulsum@atu.com', password: 'qwerty' }
 	];
   
-	//kayıt
+	// kayıt butonu ile tetiklenen kayıt alert
 	signupForm.addEventListener('submit', (e) => {
 	  if (signupForm.checkValidity()) {
 		alert('Kayıt Olundu!');
 	  } else {
 		e.preventDefault();
 	  }
-	});
+	}); 
   
+	// sayfa yenilenmesini engeller
 	loginForm.addEventListener('submit', (e) => {
-	  e.preventDefault(); // submit blocked
+	  e.preventDefault(); 
   
+	  // formları kontrol eder
 	  if (!loginForm.checkValidity()) {
 		loginForm.reportValidity();
 		return;
-	  }
+	  } 
   
 	  // db veri alma
 	  const email = loginForm.email.value;
-	  const password = loginForm.pswd.value;
+	  const password = loginForm.pswd.value;  
   
-	  // db search
-	  const userFound = users.find(user => user.email === email && user.password === password);
+	  // db veri eşleştirme
+	  const userFound = users.find(user => user.email === email && user.password === password);	  
   
 	  if (userFound) {
 		alert('Giriş başarılı! Ana sayfaya yönlendiriliyorsun...'); // yönlendirme alert
